@@ -1,0 +1,139 @@
+/* ==========================================================================
+   HSF Facilities Management — about.css
+   Styles unique to about.html (story, team, values, trust list).
+   Loaded AFTER global.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Our story / trust — two-column blocks; team runs single-column
+   -------------------------------------------------------------------------- */
+.story__grid,
+.trust__grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.story .btn {
+  margin-top: 0.6rem;
+}
+
+.story__media {
+  aspect-ratio: 4 / 3;
+}
+
+/* Team block runs as a single centred column — no staff photo to pair it with */
+.team__solo {
+  max-width: 46rem;
+  margin-inline: auto;
+}
+
+@media (min-width: 900px) {
+  .story__grid {
+    grid-template-columns: 1.05fr 0.95fr;
+  }
+
+  .trust__grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Tick list (Our team)
+   -------------------------------------------------------------------------- */
+.ticks {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.4rem;
+}
+
+.ticks li {
+  position: relative;
+  padding-inline-start: 2.1rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.ticks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.28rem;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--teal-050) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23118D95' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5L20 7'/%3E%3C/svg%3E") center / 13px 13px no-repeat;
+}
+
+/* --------------------------------------------------------------------------
+   Mission & values cards
+   -------------------------------------------------------------------------- */
+.values-grid {
+  display: grid;
+  gap: clamp(1rem, 2.2vw, 1.6rem);
+  grid-template-columns: 1fr;
+}
+
+.value-card {
+  text-align: left;
+  transform-style: preserve-3d;
+  /* about.js adds a very subtle pointer tilt on desktop */
+  transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+}
+
+.value-card h3 {
+  margin-bottom: 0.4rem;
+}
+
+.value-card p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+@media (min-width: 620px) {
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .values-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Why clients trust us
+   -------------------------------------------------------------------------- */
+.trust-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.trust-list li {
+  display: grid;
+  gap: 0.25rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--teal);
+  border-radius: var(--r);
+  padding: 1.1rem 1.3rem;
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.trust-list li:hover {
+  transform: translateX(5px);
+  box-shadow: var(--shadow);
+}
+
+.trust-list strong {
+  font-family: var(--font-head);
+  color: var(--navy);
+  font-size: 1.02rem;
+}
+
+.trust-list span {
+  color: var(--muted);
+  font-size: 0.95rem;
+}

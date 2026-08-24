@@ -1,0 +1,162 @@
+/* ==========================================================================
+   HSF Facilities Management — services.css
+   Styles unique to services.html (filter bar, service cards, coverage list).
+   Loaded AFTER global.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Filter bar
+   -------------------------------------------------------------------------- */
+.services-intro {
+  padding-bottom: 0;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.filter {
+  font-family: var(--font-head);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--navy);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 0.7rem 1.35rem;
+  cursor: pointer;
+  transition: background-color var(--t-fast), color var(--t-fast),
+    border-color var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
+}
+
+.filter:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.filter.is-active {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--white);
+  box-shadow: var(--shadow-teal);
+}
+
+.filters__status {
+  text-align: center;
+  font-size: 0.88rem;
+  margin: 1rem 0 0;
+  min-height: 1.2em;
+}
+
+/* --------------------------------------------------------------------------
+   Service sections + cards
+   -------------------------------------------------------------------------- */
+.svc-section[hidden] {
+  display: none;
+}
+
+.svc-list {
+  display: grid;
+  gap: clamp(1rem, 2.2vw, 1.6rem);
+  grid-template-columns: 1fr;
+}
+
+.svc-item {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* offset so anchor links don't hide the card under the sticky header */
+  scroll-margin-top: calc(var(--header-h) + 24px);
+}
+
+.svc-item h3 {
+  margin-bottom: 0.45rem;
+}
+
+.svc-item p {
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.svc-item .link-arrow {
+  margin-top: auto;
+}
+
+/* Gradient underline sweep on hover */
+.svc-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t);
+}
+
+.svc-item:hover::before,
+.svc-item:focus-within::before {
+  transform: scaleX(1);
+}
+
+.svc-item:hover h3 {
+  color: var(--teal);
+}
+
+/* Card the visitor just arrived at via an anchor link */
+.svc-item.is-targeted {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 4px rgba(53, 180, 188, 0.18), var(--shadow);
+}
+
+/* Hidden by the category filter */
+.svc-item.is-filtered {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .svc-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .svc-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Coverage list
+   -------------------------------------------------------------------------- */
+.coverage-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.coverage-list li {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.93rem;
+  color: var(--navy);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  padding: 0.65rem 1.3rem;
+  transition: transform var(--t-fast), border-color var(--t-fast),
+    box-shadow var(--t-fast);
+}
+
+.coverage-list li:hover {
+  transform: translateY(-3px);
+  border-color: var(--teal);
+  box-shadow: var(--shadow);
+}

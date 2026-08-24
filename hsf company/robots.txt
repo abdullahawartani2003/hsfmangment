@@ -1,0 +1,8 @@
+# robots.txt — HSF Facilities Management
+# Allow every crawler to index the whole site.
+
+User-agent: *
+Allow: /
+
+# Update the domain below if the site is published elsewhere.
+Sitemap: https://hsffacilitymanagement.com/sitemap.xml
